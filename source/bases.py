@@ -17,12 +17,29 @@ def decode(digits, base):
     return: int -- integer representation of number (in base 10)"""
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
-    # TODO: Decode digits from binary (base 2)
-    # ...
-    # TODO: Decode digits from hexadecimal (base 16)
-    # ...
-    # TODO: Decode digits from any base (2 up to 36)
-    # ...
+    # Decode digits from binary (base 2)
+    if base == 2:
+        decoded_number = 0
+        for bit in range(len(digits)):
+            decoded_number += int(digits[-1 - bit]) * (2 ** bit)
+        return decoded_number
+
+    # Decode digits from hexadecimal (base 16)
+    if base == 16:
+        decoded_number = 0
+        for digit in range(len(digits)):
+            # Only accepts lowercase letters
+            decoded_number += string.hexdigits.index(digits[-1 - digit]) * (16 ** digit)
+        return decoded_number
+
+    #  Decode digits from any base (2 up to 36)
+    decoded_number = 0
+    all_digits = string.digits + string.ascii_lowercase
+    for digit in range(len(digits)):
+        print(digits[-1 - digit], digit)
+        # Only accepts lowercase letters
+        decoded_number += all_digits.index(digits[-1 - digit]) * (base ** digit)
+    return decoded_number
 
 
 def encode(number, base):
@@ -79,3 +96,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    # print(decode('4ea2', 30))
