@@ -9,6 +9,8 @@ import string
 # string.ascii_letters is ascii_lowercase + ascii_uppercase
 # string.printable is digits + ascii_letters + punctuation + whitespace
 
+import math
+
 
 def decode(digits, base):
     """Decode given digits in given base to number in base 10.
@@ -52,11 +54,68 @@ def encode(number, base):
     # Handle unsigned numbers only for now
     assert number >= 0, 'number is negative: {}'.format(number)
     # TODO: Encode number in binary (base 2)
-    # ...
+    if base == 2:
+        exponent = 0
+        while number / 2 >= 1:
+            number /= 2
+            exponent += 1
+
+        number = number * (2 ** exponent)
+        encoded_number = ''
+        while exponent >= 0:
+            if number >= (2 ** exponent):
+                encoded_number += '1'
+                number -= (2 ** exponent)
+            else:
+                encoded_number += '0'
+
+            print(exponent, encoded_number)
+            exponent -= 1
+
+        return encoded_number
+
     # TODO: Encode number in hexadecimal (base 16)
-    # ...
+    if base == 16:
+        exponent = 0
+        while number / 16 >= 1:
+            number /= 16
+            exponent += 1
+
+        number = round(number * (16 ** exponent))
+        encoded_number = ''
+        while exponent >= 0:
+            if number >= (16 ** exponent):
+                placeholder_value = math.floor(number / (16 ** exponent))
+                encoded_number += string.printable[placeholder_value]
+                number -= placeholder_value * (16 ** exponent)
+            else:
+                encoded_number += '0'
+
+            exponent -= 1
+
+        return encoded_number
+
     # TODO: Encode number in any base (2 up to 36)
-    # ...
+    exponent = 0
+    while number / base >= 1:
+        number /= base
+        exponent += 1
+
+    number = round(number * (base ** exponent))
+    encoded_number = ''
+    while exponent >= 0:
+        if number >= (base ** exponent):
+            placeholder_value = math.floor(number / (base ** exponent))
+            print(number, (base ** exponent))
+            print(number / (base ** exponent))
+            encoded_number += string.printable[placeholder_value]
+            number -= placeholder_value * (base ** exponent)
+        else:
+            encoded_number += '0'
+
+        exponent -= 1
+
+    return encoded_number
 
 
 def convert(digits, base1, base2):
@@ -95,5 +154,8 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    # main()
     # print(decode('4ea2', 30))
+    print(encode(2344, 10))
+    print(encode(2345, 10))
+    print(encode(2346, 10))
