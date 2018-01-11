@@ -5,7 +5,7 @@ import unittest
 
 
 class SearchTest(unittest.TestCase):
-    def test_linear_search_with_items_in_list(self):
+    def test_linear_search_with_odd_items_in_list(self):
         # linear search can find items regardless of list order
         names = ['Winnie', 'Kojin', 'Brian', 'Nabil', 'Julia', 'Alex', 'Nick']
         # linear search should return the index of each item in the list
@@ -24,7 +24,7 @@ class SearchTest(unittest.TestCase):
         assert linear_search(names, 'Jeremy') is None
         assert linear_search(names, 'nobody') is None
 
-    def test_binary_search_with_items_in_list(self):
+    def test_binary_search_with_odd_items_in_list(self):
         # binary search requires list values to be in sorted order
         names = ['Alex', 'Brian', 'Julia', 'Kojin', 'Nabil', 'Nick', 'Winnie']
         # binary search should return the index of each item in the list
@@ -35,6 +35,19 @@ class SearchTest(unittest.TestCase):
         assert binary_search(names, 'Nabil') == 4
         assert binary_search(names, 'Nick') == 5
         assert binary_search(names, 'Winnie') == 6
+
+    def test_binary_search_with_even_items_in_list(self):
+        # binary search requires list values to be in sorted order
+        names = ['Alex', 'Brian', 'John', 'Julia', 'Kojin', 'Nabil', 'Nick', 'Winnie']
+        # binary search should return the index of each item in the list
+        assert binary_search(names, 'Alex') == 0
+        assert binary_search(names, 'Brian') == 1
+        assert binary_search(names, 'John') == 2
+        assert binary_search(names, 'Julia') == 3
+        assert binary_search(names, 'Kojin') == 4
+        assert binary_search(names, 'Nabil') == 5
+        assert binary_search(names, 'Nick') == 6
+        assert binary_search(names, 'Winnie') == 7
 
     def test_binary_search_with_items_not_in_list(self):
         # binary search requires list values to be in sorted order
