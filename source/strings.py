@@ -5,6 +5,11 @@ def contains(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement contains here (iteratively and/or recursively)
+    for character_index in range(len(text) - len(pattern) + 1):
+        if text[character_index:character_index + len(pattern)] == pattern:
+            return True
+
+    return False
 
 
 def find_index(text, pattern):
