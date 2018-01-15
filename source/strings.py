@@ -29,8 +29,15 @@ def find_all_indexes(text, pattern):
     or an empty list if not found."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
-    # TODO: Implement find_all_indexes here (iteratively and/or recursively)
+    # Implement find_all_indexes here (iteratively and/or recursively)
+    all_indexes = []
 
+    for character_index in range(len(text)):
+        print(text[character_index])
+        if text[character_index:character_index + len(pattern)] == pattern:
+            all_indexes.append(character_index)
+
+    return all_indexes
 
 def test_string_algorithms(text, pattern):
     found = contains(text, pattern)
@@ -62,4 +69,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    # main()
+    find_all_indexes('abc', '')
