@@ -33,7 +33,6 @@ def find_all_indexes(text, pattern):
     all_indexes = []
 
     for character_index in range(len(text)):
-        print(text[character_index])
         if text[character_index:character_index + len(pattern)] == pattern:
             all_indexes.append(character_index)
 

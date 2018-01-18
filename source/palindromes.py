@@ -23,7 +23,8 @@ def is_palindrome_iterative(text):
     left_index = 0
     right_index = len(text) - 1
 
-    while right_index - left_index > 0:
+    # Do while character indexes have not reached center of text
+    while right_index > left_index:
         while lowercase_text[left_index] not in string.ascii_lowercase:
             left_index += 1
         while lowercase_text[right_index] not in string.ascii_lowercase:
@@ -42,10 +43,11 @@ def is_palindrome_iterative(text):
 
 def is_palindrome_recursive(text, left=None, right=None):
     # Implement the is_palindrome function recursively here
-    if left == None:
+    if left is None and right is None:
         return is_palindrome_recursive(text.lower(), 0, len(text) - 1)
     if right - left < 1:
         return True
+    # Can do while loops for checking if characters in string
     if text[left] not in string.ascii_lowercase:
         return is_palindrome_recursive(text, left + 1, right)
     if text[right] not in string.ascii_lowercase:
