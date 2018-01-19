@@ -5,12 +5,15 @@ def contains(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # Implement contains here (iteratively and/or recursively)
-    for character_index in range(len(text) - len(pattern) + 1):
-        if text[character_index:character_index + len(pattern)] == pattern:
-            return True
+    # for character_index in range(len(text)):
+    #     if text[character_index:character_index + len(pattern)] == pattern:
+    #         return True
+    #
+    # return False
 
+    if find_index(text, pattern) is not None:
+        return True
     return False
-
 
 def find_index(text, pattern):
     """Return the starting index of the first occurrence of pattern in text,
@@ -18,7 +21,7 @@ def find_index(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # Implement find_index here (iteratively and/or recursively)
-    for character_index in range(len(text) - len(pattern) + 1):
+    for character_index in range(len(text)):
         if text[character_index:character_index + len(pattern)] == pattern:
             return character_index
 
@@ -30,6 +33,9 @@ def find_all_indexes(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # Implement find_all_indexes here (iteratively and/or recursively)
+    # NOTE: This method can be reused for the other methods, but it will reduce
+    # the best case scenario from O(1) to O(n) because find_all_indexes always
+    # iterates through all characters in the text before returning.
     all_indexes = []
 
     for character_index in range(len(text)):
