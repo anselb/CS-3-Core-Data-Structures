@@ -31,7 +31,9 @@ class LinkedStack(object):
 
     def push(self, item):
         """Insert the given item on the top of this stack.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – The run time is constant regardless of the number
+        of nodes in the linked list. A new node is created and prepended to the
+        beginning of the linked list; nothing is iterated through."""
         # Push given item
         self.list.prepend(item)
 
@@ -46,7 +48,9 @@ class LinkedStack(object):
     def pop(self):
         """Remove and return the item on the top of this stack,
         or raise ValueError if this stack is empty.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – The run time is constant. Even through the stack
+        can get really big, all the methods that are run are done on the first
+        item in the stack."""
         # Remove and return top item, if any
         if self.is_empty():
             raise ValueError('Cannot pop on an empty stack')
@@ -83,7 +87,9 @@ class ArrayStack(object):
 
     def push(self, item):
         """Insert the given item on the top of this stack.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – The run time is constant. The built in append
+        method for lists is O(1), probably because one calculation needs to be
+        done in order to find the end of the list."""
         # Insert given item
         self.list.append(item)
 
@@ -98,7 +104,10 @@ class ArrayStack(object):
     def pop(self):
         """Remove and return the item on the top of this stack,
         or raise ValueError if this stack is empty.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – The run time is constant. The built in pop method
+        for lists is O(1) if the last item in the list is popped. Like the
+        append method, this is probably because one calculation needs to be
+        done in order to find the last item of the list."""
         # Remove and return top item, if any
         if self.is_empty():
             raise ValueError('Cannot pop on an empty stack')
