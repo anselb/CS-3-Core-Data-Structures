@@ -31,7 +31,10 @@ class LinkedQueue(object):
 
     def enqueue(self, item):
         """Insert the given item at the back of this queue.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – The append method does not need to iterate through
+        all nodes in the linked list because the tail of the linked list is
+        saved. As a result, the run time of the append method is constant, so
+        the run time of the enqueue method is constant."""
         # Insert given item
         self.list.append(item)
 
@@ -46,7 +49,8 @@ class LinkedQueue(object):
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – Finding the first item of the linked list and
+        deleting it is constant because no nodes must be iterated through."""
         # Remove and return front item, if any
         if self.is_empty():
             raise ValueError('Cannot dequeue on an empty queue')
@@ -84,7 +88,9 @@ class ArrayQueue(object):
 
     def enqueue(self, item):
         """Insert the given item at the back of this queue.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(1) – The run time is constant. The built in append
+        method for lists is O(1), probably because one calculation needs to be
+        done in order to find the end of the list."""
         # Insert given item
         self.list.append(item)
 
@@ -99,7 +105,9 @@ class ArrayQueue(object):
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty.
-        Running time: O(???) – Why? [TODO]"""
+        Running time: O(n) – The run time is O(n) for n items in the list.
+        Becuase of how lists are stored in memory, if we remove the first item
+        in the list, we must then move all other items forward one position."""
         # Remove and return front item, if any
         if self.is_empty():
             raise ValueError('Cannot pop on an empty stack')
