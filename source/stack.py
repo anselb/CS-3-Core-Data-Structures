@@ -43,7 +43,9 @@ class LinkedStack(object):
         # Return top item, if any
         if self.is_empty():
             return None
-        return self.list.get_at_index(0)
+        # return self.list.get_at_index(0)
+        # Getting head.data is slightly faster and makes more sense to call
+        return self.list.head.data
 
     def pop(self):
         """Remove and return the item on the top of this stack,
@@ -55,7 +57,7 @@ class LinkedStack(object):
         if self.is_empty():
             raise ValueError('Cannot pop on an empty stack')
 
-        peek = self.list.get_at_index(0)
+        peek = self.list.head.data
         self.list.delete(peek)
         return peek
 
@@ -89,7 +91,9 @@ class ArrayStack(object):
         """Insert the given item on the top of this stack.
         Running time: O(1) – The run time is constant. The built in append
         method for lists is O(1), probably because one calculation needs to be
-        done in order to find the end of the list."""
+        done in order to find the end of the list. Rarely, if the array fills
+        up, the run time is longer (O(n)) because a bigger array must be
+        created and the items must be copied over."""
         # Insert given item
         self.list.append(item)
 
