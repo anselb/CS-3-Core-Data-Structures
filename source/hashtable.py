@@ -154,9 +154,14 @@ class HashTable(object):
         self.__init__(new_size)
         # Insert each key-value entry into the new list of buckets,
         # which will rehash them into a new bucket index based on the new size
-        for key_value_pair in temp_store:
-            # key_value_pair[0] is key, key_value_pair[1] is value
-            self.set(key_value_pair[0], key_value_pair[1])
+        for key, value in temp_store:
+            self.set(key, value)
+
+            # NOTE: These three lines are more efficient than the set method
+            # because the set method unnecessarily calls the find method.
+            # index = self._bucket_index(key)
+            # bucket = self.buckets[index]
+            # bucket.append((key, value))
 
 
 def test_hash_table():
