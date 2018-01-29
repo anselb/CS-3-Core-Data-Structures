@@ -131,4 +131,7 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+# Routing Project
+routing/data/
+
 # End of https://www.gitignore.io/api/macos,python
