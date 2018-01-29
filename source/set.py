@@ -43,4 +43,16 @@ class Set(object):
                 if item in other_set:
                     intersection_set.append(item)
         return intersection_set
+
+    def difference(self, other_set):
+        """Return a new set that is the difference of this set and other_set."""
+        difference_set = []
+        for item in other_set:
+            if not self.set.contains(item):
+                difference_set.append(item)
+
+        for item in self.set:
+            if item not in other_set:
+                difference_set.append(item)
+        return difference_set
     
