@@ -12,3 +12,9 @@ class Set(object):
     def contains(self, element):
         """Return True if element is in set, otherwise return False."""
         return element in self.set
+
+    def add(self, element):
+        """Add element to set, if not already in set."""
+        if self.contains(element):
+            self.set.append(element)
+    
