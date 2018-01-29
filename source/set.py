@@ -55,4 +55,11 @@ class Set(object):
             if item not in other_set:
                 difference_set.append(item)
         return difference_set
-    
+
+    def is_subset(self, other_set):
+        """Return a True if other_set is a subset of this set, False otherwise."""
+        for item in other_set:
+            if item not in self.set:
+                return False
+
+        return True
