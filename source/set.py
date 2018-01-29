@@ -8,3 +8,7 @@ class Set(object):
         self.size = 0  # Number of items in set
         for item in elements:
             self.add(item)
+
+    def contains(self, element):
+        """Return True if element is in set, otherwise return False."""
+        return element in self.set
