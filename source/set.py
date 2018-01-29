@@ -15,7 +15,7 @@ class Set(object):
 
     def add(self, element):
         """Add element to set, if not already in set."""
-        if self.contains(element):
+        if not self.contains(element):
             self.set.append(element)
             self.size += 1
 
