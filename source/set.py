@@ -17,6 +17,7 @@ class Set(object):
         """Add element to set, if not already in set."""
         if self.contains(element):
             self.set.append(element)
+            self.size += 1
 
     def remove(self, element):
         """Remove element from this set, if not presenet, raise ValueError."""
@@ -24,6 +25,7 @@ class Set(object):
             raise ValueError("'{}' was not found".format(element))
         else:
             self.set.remove(element)
+            self.size -= 1
 
     def union(self, other_set):
         """Return a new set that is the union of this set and other_set."""
