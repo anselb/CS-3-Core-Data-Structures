@@ -29,4 +29,18 @@ class Set(object):
         """Return a new set that is the union of this set and other_set."""
         union_set = self.set + other_set
         return union_set
+
+    def intersection(self, other_set):
+        """Return a new set that is the intersection of this set and other_set."""
+        intersection_set = []
+        if len(self.set) > len(other_set):
+            for item in other_set:
+                if self.set.contains(item):
+                    intersection_set.append(item)
+
+        else:
+            for item in self.set:
+                if item in other_set:
+                    intersection_set.append(item)
+        return intersection_set
     
