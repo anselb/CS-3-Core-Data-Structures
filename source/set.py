@@ -24,6 +24,7 @@ class Set(object):
         if not self.contains(element):
             raise ValueError("'{}' was not found".format(element))
         else:
+            # O(n) in every case
             self.set.remove(element)
             self.size -= 1
 
@@ -34,28 +35,28 @@ class Set(object):
 
     def intersection(self, other_set):
         """Return a new set that is the intersection of this set and other_set."""
-        intersection_set = []
-        if len(self.set) > len(other_set):
-            for item in other_set:
-                if self.set.contains(item):
-                    intersection_set.append(item)
+        intersection_set = Set()
+        # if len(self.set) > len(other_set):
+        for item in other_set:
+            if self.contains(item):
+                intersection_set.add(item)
 
-        else:
-            for item in self.set:
-                if item in other_set:
-                    intersection_set.append(item)
+        # else:
+        #     for item in self.set:
+        #         if item in other_set:
+        #             intersection_set.append(item)
         return intersection_set
 
     def difference(self, other_set):
         """Return a new set that is the difference of this set and other_set."""
-        difference_set = []
+        difference_set = Set()
         for item in other_set:
-            if not self.set.contains(item):
-                difference_set.append(item)
+            if not self.contains(item):
+                difference_set.add(item)
 
         for item in self.set:
             if item not in other_set:
-                difference_set.append(item)
+                difference_set.add(item)
         return difference_set
 
     def is_subset(self, other_set):
