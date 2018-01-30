@@ -1,5 +1,20 @@
 #!python
 
+# NOTE: In the intersection method, choosing to iterate based on length of the
+# set is pointless because the 'in' keyword will iterate through the other set.
+# In a different implementation of the Set class, where iterating through the
+# passed in set can be done quicker than O(n), then choosing which set to
+# iterate over will matter.
+# NOTE: When adding an abstract data type to your code, you should try to use
+# the correct implementation of the data structure. Even though a Python list
+# may only be composed of unique items and might technically be called a set,
+# a duplicate item can still be added and make it not a set.
+# NOTE: There is a difference between self.set and self. self.set will refer to
+# whatever self.set is; in this Set class, self.set is a list. The self keyword
+# will refer its own class and its own methods. Ex: self.set.remove() is the
+# list method remove while self.remove() is self's remove method.
+
+
 class Set(object):
 
     def __init__(self, elements=None):
