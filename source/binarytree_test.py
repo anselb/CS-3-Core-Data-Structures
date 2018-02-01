@@ -47,6 +47,35 @@ class BinaryTreeNodeTest(unittest.TestCase):
         node.right = None
         assert node.is_branch() is False
 
+    def test_height(self):
+        # Create node with no children
+        node = BinaryTreeNode(2)
+        assert node.height() == 0
+        # Attach left child node
+        node.left = BinaryTreeNode(1)
+        assert node.height() == 1
+        # Attach right child node
+        node.right = BinaryTreeNode(3)
+        assert node.height() == 1
+        # Attach right child node to right node child
+        node.right.right = BinaryTreeNode(5)
+        assert node.height() == 2
+        # Attach right child node to previously attached right node child
+        node.right.right.right = BinaryTreeNode(7)
+        assert node.height() == 3
+        # Detach right leaf node
+        node.right.right.right = None
+        assert node.height() == 2
+        # Detach right leaf node again
+        node.right.right = None
+        assert node.height() == 1
+        # Detach left child node
+        node.left = None
+        assert node.height() == 1
+        # Detach right child node
+        node.right = None
+        assert node.height() == 0
+
 
 class BinarySearchTreeTest(unittest.TestCase):
 
