@@ -118,6 +118,12 @@ class BinarySearchTreeTest(unittest.TestCase):
         assert tree.size == 2
         tree.insert('C')
         assert tree.size == 3
+        tree.insert('E')
+        assert tree.size == 4
+        tree.insert('D')
+        assert tree.size == 5
+        tree.insert('F')
+        assert tree.size == 6
 
     def test_search_with_3_items(self):
         # Create a complete binary search tree of 3 items in level-order
