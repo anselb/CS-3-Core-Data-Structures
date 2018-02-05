@@ -133,5 +133,6 @@ venv.bak/
 
 # Routing Project
 routing/data/
+routing/test_files/
 
 # End of https://www.gitignore.io/api/macos,python
