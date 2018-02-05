@@ -28,7 +28,12 @@ class BinaryTreeNode(object):
     def height(self):
         """Return the height of this node (the number of edges on the longest
         downward path from this node to a descendant leaf node).
-        TODO: Best and worst case running time: ??? under what conditions?"""
+        Best case running time: O(1) if height() is getting the height of a
+        node with no descendants.
+        Worst case running time: O(n) for n nodes that are descendants of the
+        node that height is called on. All heights of the descendants are
+        calculated in order to find the height of the node that height() is
+        called on."""
         if self.is_leaf():
             return 0
         # Check if left child has a value and if so calculate its height
@@ -64,7 +69,12 @@ class BinarySearchTree(object):
     def height(self):
         """Return the height of this tree (the number of edges on the longest
         downward path from this tree's root node to a descendant leaf node).
-        TODO: Best and worst case running time: ??? under what conditions?"""
+        Best case running time: O(1) if height() is getting the height of the
+        root node and the root node has no descendants, or if there is no root
+        node.
+        Worst case running time: O(n) for n nodes in the tree. All heights of
+        the root descendants are calculated in order to eventually find the
+        height of the tree."""
         # Check if root node has a value and if so calculate its height
         if self.root is not None:
             return self.root.height()
@@ -268,8 +278,8 @@ class BinarySearchTree(object):
     def _traverse_level_order_iterative(self, start_node, visit):
         """Traverse this binary tree with iterative level-order traversal (BFS).
         Start at the given node and visit each node with the given function.
-        TODO: Running time: ??? Why and under what conditions?
-        TODO: Memory usage: ??? Why and under what conditions?"""
+        TODO: Running time: O(n) Why and under what conditions?
+        TODO: Memory usage: O(n) Why and under what conditions?"""
         # Create queue to store nodes not yet traversed in level-order
         queue = deque()
         # Enqueue given starting node
