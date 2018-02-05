@@ -16,3 +16,6 @@ with open('data/route-costs-106000.txt', 'r') as f:
     index = indexes[0]
     test = data[index + len(number) + 1:index + len(number) + 5]
 print(test)
+
+# Command-F works a lot faster if a coworker is asking for the cost of a single
+# route.
