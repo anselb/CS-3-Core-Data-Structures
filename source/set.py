@@ -21,8 +21,9 @@ class Set(object):
         """Initialize this set, and add each element if elements is given."""
         self.set = list()
         self.size = 0  # Number of items in set
-        for item in elements:
-            self.add(item)
+        if elements is not None:
+            for item in elements:
+                self.add(item)
 
     def contains(self, element):
         """Return True if element is in set, otherwise return False."""
