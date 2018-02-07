@@ -66,17 +66,72 @@ class SetTest(unittest.TestCase):
         assert st.contains('c') is False
 
     def test_union(self):
-        st = Set()
-        pass
+        st = Set(['a', 'b', 'c'])
+        other_set = ['d', 'e', 'f']
+        union_set = st.union(other_set)
+        assert union_set.size == 6
+
+        assert union_set.contains('a') is True
+        assert union_set.contains('b') is True
+        assert union_set.contains('c') is True
+        assert union_set.contains('d') is True
+        assert union_set.contains('e') is True
+        assert union_set.contains('f') is True
+        assert union_set.contains('g') is False
 
     def test_intersection(self):
-        st = Set()
-        pass
+        st = Set(['a', 'b', 'c'])
+        other_set = ['b', 'e', 'c', 'f']
+        intersection_set = st.intersection(other_set)
+        assert intersection_set.size == 2
+
+        assert intersection_set.contains('a') is False
+        assert intersection_set.contains('b') is True
+        assert intersection_set.contains('c') is True
+        assert intersection_set.contains('d') is False
+        assert intersection_set.contains('e') is False
+        assert intersection_set.contains('f') is False
+        assert intersection_set.contains('g') is False
 
     def test_difference(self):
-        st = Set()
-        pass
+        st = Set(['a', 'b', 'c'])
+        other_set = ['b', 'e', 'c', 'f']
+        difference_set = st.difference(other_set)
+        assert difference_set.size == 3
+
+        assert difference_set.contains('a') is True
+        assert difference_set.contains('b') is False
+        assert difference_set.contains('c') is False
+        assert difference_set.contains('d') is False
+        assert difference_set.contains('e') is True
+        assert difference_set.contains('f') is True
+        assert difference_set.contains('g') is False
 
     def test_is_subset(self):
-        st = Set()
-        pass
+        st = Set(['a', 'b', 'c'])
+        other_set = ['a']
+        assert st.is_subset(other_set) is True
+
+        other_set = ['b']
+        assert st.is_subset(other_set) is True
+
+        other_set = ['c']
+        assert st.is_subset(other_set) is True
+
+        other_set = ['a', 'b']
+        assert st.is_subset(other_set) is True
+
+        other_set = ['b', 'c']
+        assert st.is_subset(other_set) is True
+
+        other_set = ['a', 'b', 'c']
+        assert st.is_subset(other_set) is True
+
+        other_set = ['a', 'b', 'c', 'd']
+        assert st.is_subset(other_set) is False
+
+        other_set = ['a', 'b', 'd']
+        assert st.is_subset(other_set) is False
+
+        other_set = ['d']
+        assert st.is_subset(other_set) is False
