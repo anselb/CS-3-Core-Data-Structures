@@ -62,10 +62,29 @@ def merge(items1, items2):
     and return a new list containing all items in sorted order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Repeat until one list is empty
-    # TODO: Find minimum item in both lists and append it to new list
-    # TODO: Append remaining items in non-empty list to new list
+    items1_index = 0
+    items2_index = 0
+    merged_items = list()
 
+    # Repeat until one list is empty
+    while items1_index < len(items1) and items2_index < len(items2):
+        # Find minimum item in both lists and append it to new list
+        if items1[items1_index] < items2[items2_index]:
+            merged_items.append(items1[items1_index])
+            items1_index += 1
+        else:
+            merged_items.append(items2[items2_index])
+            items2_index += 1
+
+    # Append remaining items in non-empty list to new list
+    if items1_index >= len(items1):
+        for index in range(items2_index, len(items2)):
+            merged_items.append(items2[index])
+    else:
+        for index in range(items1_index, len(items1)):
+            merged_items.append(items1[index])
+
+    return merged_items
 
 def split_sort_merge(items):
     """Sort given items by splitting list into two approximately equal halves,
@@ -73,10 +92,15 @@ def split_sort_merge(items):
     a list in sorted order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Split items list into approximately equal halves
-    # TODO: Sort each half using any other sorting algorithm
-    # TODO: Merge sorted halves into one list in sorted order
-
+    # Split items list into approximately equal halves
+    middle_index = len(items) // 2
+    items_left = items[:middle_index]
+    items_right = items[middle_index:]
+    # Sort each half using any other sorting algorithm
+    selection_sort(items_left)
+    selection_sort(items_right)
+    # Merge sorted halves into one list in sorted order
+    items[:] = merge(items_left, items_right)
 
 def merge_sort(items):
     """Sort given items by splitting list into two approximately equal halves,
