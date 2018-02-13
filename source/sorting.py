@@ -52,9 +52,24 @@ def insertion_sort(items):
     order in front of items, and repeating until all items are in order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Repeat until all items are in sorted order
-    # TODO: Take first unsorted item
-    # TODO: Insert it in sorted order in front of items
+    # Repeat until all items are in sorted order
+    # First item is already sorted
+    for index in range(1, len(items)):
+        # Take first unsorted item
+        unsorted_item = items.pop(index)
+        compare_index = index
+
+        while compare_index >= 0:
+            if unsorted_item > items[compare_index]:
+                break
+            else:
+                compare_index -= 1
+
+        # Insert it in sorted order in front of items
+        print(compare_index)
+        items.insert(compare_index, unsorted_item)
+        print(unsorted_item)
+        print(items)
 
 
 def merge(items1, items2):
@@ -107,11 +122,18 @@ def merge_sort(items):
     sorting each recursively, and merging results into a list in sorted order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: Check if list is so small it's already sorted (base case)
-    # TODO: Split items list into approximately equal halves
-    # TODO: Sort each half by recursively calling merge sort
-    # TODO: Merge sorted halves into one list in sorted order
-
+    # Check if list is so small it's already sorted (base case)
+    if len(items) < 2:
+        return items
+    # Split items list into approximately equal halves
+    middle_index = len(items) // 2
+    items_left = items[:middle_index]
+    items_right = items[middle_index:]
+    # Sort each half by recursively calling merge sort
+    merge_sort(items_left)
+    merge_sort(items_right)
+    # Merge sorted halves into one list in sorted order
+    items[:] = merge(items_left, items_right)
 
 def random_ints(count=20, min=1, max=50):
     """Return a list of `count` integers sampled uniformly at random from
