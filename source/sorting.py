@@ -1,5 +1,7 @@
 #!python
 
+from binarytree import BinarySearchTree
+
 
 def is_sorted(items):
     """Return a boolean indicating whether given items are in sorted order.
@@ -52,6 +54,7 @@ def insertion_sort(items):
     order in front of items, and repeating until all items are in order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
+    # TODO: fix this sort
     # Repeat until all items are in sorted order
     # First item is already sorted
     for index in range(1, len(items)):
@@ -109,8 +112,8 @@ def split_sort_merge(items):
     TODO: Memory usage: ??? Why and under what conditions?"""
     # Split items list into approximately equal halves
     middle_index = len(items) // 2
-    items_left = items[:middle_index]
-    items_right = items[middle_index:]
+    items_left = items[: middle_index]
+    items_right = items[middle_index :]
     # Sort each half using any other sorting algorithm
     selection_sort(items_left)
     selection_sort(items_right)
@@ -127,13 +130,37 @@ def merge_sort(items):
         return items
     # Split items list into approximately equal halves
     middle_index = len(items) // 2
-    items_left = items[:middle_index]
-    items_right = items[middle_index:]
+    items_left = items[: middle_index]
+    items_right = items[middle_index :]
     # Sort each half by recursively calling merge sort
     merge_sort(items_left)
     merge_sort(items_right)
     # Merge sorted halves into one list in sorted order
     items[:] = merge(items_left, items_right)
+
+def tree_sort(items):
+    tree = BinarySearchTree(items)
+    items[:] = tree.items_in_order()
+
+def quick_sort(items):
+    if len(items) < 2:
+        return items
+
+    pivot = items[0]
+
+    smaller_items = []
+    greater_items = []
+    for index in range(1, len(items)):
+        item = items[index]
+        if item <= pivot:
+            smaller_items.append(item)
+        else:
+            greater_items.append(item)
+
+    quick_sort(smaller_items)
+    quick_sort(greater_items)
+
+    items[:] = smaller_items + [pivot] + greater_items
 
 def random_ints(count=20, min=1, max=50):
     """Return a list of `count` integers sampled uniformly at random from
