@@ -162,6 +162,57 @@ def quick_sort(items):
 
     items[:] = smaller_items + [pivot] + greater_items
 
+def partition(items, low, high):
+    """Return index `p` after in-place partitioning given items in range
+    `[low...high]` by choosing a pivot (TODO: document your method here) from
+    that range, moving pivot into index `p`, items less than pivot into range
+    `[low...p-1]`, and items greater than pivot into range `[p+1...high]`.
+    TODO: Running time: ??? Why and under what conditions?
+    TODO: Memory usage: ??? Why and under what conditions?"""
+    # TODO: Choose a pivot any way and document your method in docstring above
+    # TODO: Loop through all items in range [low...high]
+    # TODO: Move items less than pivot into front of range [low...p-1]
+    # TODO: Move items greater than pivot into back of range [p+1...high]
+    # TODO: Move pivot item into final position [p] and return index p
+
+
+def quick_sort(items, low=None, high=None):
+    """Sort given items in place by partitioning items in range `[low...high]`
+    around a pivot item and recursively sorting each remaining sublist range.
+    TODO: Best case running time: ??? Why and under what conditions?
+    TODO: Worst case running time: ??? Why and under what conditions?
+    TODO: Memory usage: ??? Why and under what conditions?"""
+    # TODO: Check if high and low range bounds have default values (not given)
+    # TODO: Check if list or range is so small it's already sorted (base case)
+    # TODO: Partition items in-place around a pivot and get index of pivot
+    # TODO: Sort each sublist range by recursively calling quick sort
+
+
+def counting_sort(numbers):
+    """Sort given numbers (integers) by counting occurrences of each number,
+    then looping over counts and copying that many numbers into output list.
+    TODO: Running time: ??? Why and under what conditions?
+    TODO: Memory usage: ??? Why and under what conditions?"""
+    # TODO: Find range of given numbers (minimum and maximum integer values)
+    # TODO: Create list of counts with a slot for each number in input range
+    # TODO: Loop over given numbers and increment each number's count
+    # TODO: Loop over counts and append that many numbers into output list
+    # FIXME: Improve this to mutate input instead of creating new output list
+
+
+def bucket_sort(numbers, num_buckets=10):
+    """Sort given numbers by distributing into buckets representing subranges,
+    sorting each bucket, and combining contents of all buckets in sorted order.
+    TODO: Running time: ??? Why and under what conditions?
+    TODO: Memory usage: ??? Why and under what conditions?"""
+    # TODO: Find range of given numbers (minimum and maximum integer values)
+    # TODO: Create list of buckets to store numbers in subranges of input range
+    # TODO: Loop over given numbers and place each item in appropriate bucket
+    # TODO: Sort each bucket using any sorting algorithm (recursive or another)
+    # TODO: Loop over buckets and append each bucket's numbers into output list
+    # FIXME: Improve this to mutate input instead of creating new output list
+
+
 def random_ints(count=20, min=1, max=50):
     """Return a list of `count` integers sampled uniformly at random from
     given range [`min`...`max`] with replacement (duplicates are allowed)."""
