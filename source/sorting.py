@@ -1,5 +1,6 @@
 #!python
 
+import random
 from binarytree import BinarySearchTree
 
 
@@ -142,19 +143,26 @@ def quick_sort_inefficient(items):
     if len(items) < 2:
         return items
 
-    pivot = items[0]
+    # It is best for pivot to be random, so adversarial input cannot be created
+    pivot_index = random.randint(0, len(items) - 1)
+    pivot = items[pivot_index]
+
+    # pivot can be first item (index of 0) or last item (index of -1)
+    # pivot = items[0]
 
     smaller_items = []
     greater_items = []
-    for index in range(1, len(items)):
+    for index in range(0, len(items)):
+        if index == pivot_index:
+            continue
         item = items[index]
         if item <= pivot:
             smaller_items.append(item)
         else:
             greater_items.append(item)
 
-    quick_sort(smaller_items)
-    quick_sort(greater_items)
+    quick_sort_inefficient(smaller_items)
+    quick_sort_inefficient(greater_items)
 
     items[:] = smaller_items + [pivot] + greater_items
 
