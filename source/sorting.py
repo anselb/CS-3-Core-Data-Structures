@@ -54,13 +54,12 @@ def insertion_sort(items):
     order in front of items, and repeating until all items are in order.
     TODO: Running time: ??? Why and under what conditions?
     TODO: Memory usage: ??? Why and under what conditions?"""
-    # TODO: fix this sort
     # Repeat until all items are in sorted order
     # First item is already sorted
     for index in range(1, len(items)):
         # Take first unsorted item
         unsorted_item = items.pop(index)
-        compare_index = index
+        compare_index = index - 1
 
         while compare_index >= 0:
             if unsorted_item > items[compare_index]:
@@ -69,10 +68,7 @@ def insertion_sort(items):
                 compare_index -= 1
 
         # Insert it in sorted order in front of items
-        print(compare_index)
-        items.insert(compare_index, unsorted_item)
-        print(unsorted_item)
-        print(items)
+        items.insert(compare_index + 1, unsorted_item)
 
 
 def merge(items1, items2):
@@ -142,7 +138,7 @@ def tree_sort(items):
     tree = BinarySearchTree(items)
     items[:] = tree.items_in_order()
 
-def quick_sort(items):
+def quick_sort_inefficient(items):
     if len(items) < 2:
         return items
 
