@@ -163,7 +163,7 @@ class BinarySearchTree(object):
                 return parent
             # Check if the given item is less than the node's data
             elif item < node.data:
-                # TODO: Update the parent and descend to the node's left child
+                # Update the parent and descend to the node's left child
                 parent = node
                 node = node.left
             # Check if the given item is greater than the node's data
